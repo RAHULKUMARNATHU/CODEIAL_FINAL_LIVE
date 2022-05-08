@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+//files
+/src/actions
+/src/components/PostsList.js
+/src/components/index.js
