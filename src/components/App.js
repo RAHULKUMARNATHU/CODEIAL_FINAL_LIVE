@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import { fetchPosts } from '../actions/posts';
 // import {PostsList} from './'
@@ -15,7 +15,60 @@ class App extends React.Component {
 
     return (
       <div>
-       
+        <nav className="nav">
+          <div className="left-div">
+            <img
+              src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
+              alt="logo"
+            />
+          </div>
+
+          <div className="search-container">
+            <img
+              className="search-icon"
+              src="https://cdn-icons-png.flaticon.com/512/1296/1296902.png"
+              alt="search-icon"
+            />
+            <input placeholder="Search" />
+            <div className="search-results">
+              <ul>
+                <li className="search-results-row">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
+                    alt="user-dp"
+                  />
+                  <span>Nathu</span>
+                </li>
+
+                <li className="search-results-row">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
+                    alt="user-dp"
+                  />
+                  <span>Nathu</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="right-nav">
+            <div className="user">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
+                id="user-dp"
+                alt="user-dp"
+              />
+              <span>Nathu</span>
+            </div>
+            <div className="nav-links">
+              <ul>
+                <li>Log in</li>
+                <li>Log out</li>
+                <li>Register</li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
         {/* <PostsList posts={posts}/> */}
         <div className="posts-list">
           {posts.map((post) => (
@@ -44,9 +97,10 @@ class App extends React.Component {
                   </div>
 
                   <div className="post-comments-icon">
-                    <img src="https://cdn-icons.flaticon.com/png/512/3608/premium/3608194.png?token=exp=1652000220~hmac=1dccf315d18ca1c00f8ddc7e0e8e2b21"
-                     alt="comments-icon"
-                      />
+                    <img
+                      src="https://cdn-icons.flaticon.com/png/512/3608/premium/3608194.png?token=exp=1652000220~hmac=1dccf315d18ca1c00f8ddc7e0e8e2b21"
+                      alt="comments-icon"
+                    />
                     <span>{post.comments.length}</span>
                   </div>
                 </div>
@@ -67,8 +121,6 @@ class App extends React.Component {
             </div>
           ))}
         </div>
- 
-      
       </div>
     );
   }
@@ -81,9 +133,7 @@ function mapStateToProps(state) {
 }
 
 App.propTypes = {
-  posts : PropTypes.array.isRequired
-}
-
+  posts: PropTypes.array.isRequired,
+};
 
 export default connect(mapStateToProps)(App);
-
