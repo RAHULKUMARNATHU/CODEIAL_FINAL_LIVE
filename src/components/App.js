@@ -2,23 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from '../actions/posts';
+import {PostsList} from './'
 
 class App extends React.Component {
-
-  componentDidMount() { 
+  componentDidMount() {
     this.props.dispatch(fetchPosts());
-   }
+  }
 
   render() {
-    console.log('Props' ,this.props);
+    const { posts } = this.props;
+
     return (
-      <div>App</div>
-    )
+      <div>
+        <PostsList posts={posts}/>
+      </div>
+    );
   }
 }
-function mapStateToProps(state){
-  return{
+
+function mapStateToProps(state) {
+  return {
     posts: state.posts,
   };
 }
+
 export default connect(mapStateToProps)(App);
+
