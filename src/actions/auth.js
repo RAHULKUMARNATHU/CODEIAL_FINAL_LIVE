@@ -7,6 +7,7 @@ import {
     SIGNUP_START,
     SIGNUP_FAILED,
     SIGNUP_SUCCESS,
+    CLEAR_AUTH_STATE,
   } from './actionTypes';
   import { APIUrls } from '../helpers/urls';
   import { getFormBody } from '../helpers/utils';
@@ -30,7 +31,7 @@ import {
     };
   }
   
-  export default  function login(email, password) {
+  export  function login(email, password) {
     return (dispatch) => {
       dispatch(startLogin());
       const url = APIUrls.login();
@@ -117,3 +118,8 @@ import {
     };
   }
   
+  export function clearAuthState() {
+    return {
+      type: CLEAR_AUTH_STATE,
+    };
+  }
