@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startSingup, signup ,clearAuthState} from '../actions/auth';
-
+import { Navigate } from 'react-router-dom';
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +12,7 @@ class Signup extends Component {
       confirmPassword: '',
     };
   }
+
 
   componentWillUnmount() {
     this.props.dispatch(clearAuthState());
@@ -35,7 +36,11 @@ class Signup extends Component {
   };
 
   render() {
-    const { inProgress, error } = this.props.auth;
+    const { inProgress, error ,isLoggedin} = this.props.auth;
+    
+    if(isLoggedin){
+      return <Navigate to ="/" />;
+    }
     return (
       <form className="login-form">
         <span className="login-signup-header"> Signup</span>
