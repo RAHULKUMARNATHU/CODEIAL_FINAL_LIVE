@@ -14,12 +14,10 @@ import { Routes} from 'react-router-dom';
 // const Signup = () => <div>SignUp</div>;
 const Settings = () => <div>Settings</div>;
 
-const PrivateRoute = (children) => {
-  console.log("comming..")
-  const { isLoggedin ,path , element:Element} = children;
-  return <Routes><Route path = {path} render={(props)=>{
-    return isLoggedin ? <Element {...props} /> : <Navigate to = "login" />
-  }}/></Routes>
+const PrivateRoute = ({children , isLoggedin}) => {
+
+    return isLoggedin ? children : <Navigate to = "/login" />
+ 
 }
 
 
@@ -63,7 +61,7 @@ class App extends React.Component {
 
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} isLoggedin ={auth.isLoggedin} />
+            <Route path="/settings" element={<PrivateRoute  isLoggedin ={auth.isLoggedin}><Settings /> </PrivateRoute>} />
             <Route path="*" element = {<Page404/>} />
           </Routes>
        
