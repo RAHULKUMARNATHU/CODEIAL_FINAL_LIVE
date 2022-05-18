@@ -4,7 +4,7 @@ import { BrowserRouter as Router , Navigate, Route  } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { fetchPosts } from '../actions/posts';
-import { Home, Navbar, Page404, Login, Signup } from './';
+import { Home, Navbar, Page404, Login, Signup ,Settings} from './';
 import  jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import { Routes} from 'react-router-dom';
@@ -12,7 +12,7 @@ import { Routes} from 'react-router-dom';
 
 // const Login = () => <div> Login </div>;
 // const Signup = () => <div>SignUp</div>;
-const Settings = () => <div>Settings</div>;
+// const Settings = () => <div>Settings</div>;
 
 const PrivateRoute = ({children , isLoggedin}) => {
 
