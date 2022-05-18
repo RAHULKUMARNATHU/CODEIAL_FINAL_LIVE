@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { clearAuthState ,login} from '../actions/auth';
-import { Navigate } from 'react-router-dom'
-
-
-
+import { clearAuthState, login } from '../actions/auth';
+import { Navigate } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -47,10 +44,10 @@ class Login extends Component {
   };
 
   render() {
-    const { error, inProgress , isLoggedin } = this.props.auth;
-    
-    if(isLoggedin){
-      return <Navigate to ="/" />;
+    const { error, inProgress, isLoggedin } = this.props.auth;
+
+    if (isLoggedin) {
+      return <Navigate to="/" />;
     }
     return (
       <form className="login-form">
@@ -77,16 +74,15 @@ class Login extends Component {
           />
         </div>
         <div className="field">
-          { inProgress ? (
-          <button onClick={this.handleFormSubmit} disabled={inProgress}>
-          Logging in..
-         </button>):
-          (<button onClick={this.handleFormSubmit} disabled={inProgress} >
-            Log In
-          </button>)
-          
-        }
-         
+          {inProgress ? (
+            <button onClick={this.handleFormSubmit} disabled={inProgress}>
+              Logging in..
+            </button>
+          ) : (
+            <button onClick={this.handleFormSubmit} disabled={inProgress}>
+              Log In
+            </button>
+          )}
         </div>
       </form>
     );

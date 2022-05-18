@@ -9,6 +9,7 @@ import  jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import { Routes} from 'react-router-dom';
 // import { useAuth } from "react-use-auth";
+import { getAuthTokenFromLocalStorage } from '../helpers/utils' 
 
 // const Login = () => <div> Login </div>;
 // const Signup = () => <div>SignUp</div>;
@@ -25,7 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
   
-    const token = localStorage.getItem('token');
+    const token = getAuthTokenFromLocalStorage();
 
     if (token) {
       const user = jwtDecode(token);
