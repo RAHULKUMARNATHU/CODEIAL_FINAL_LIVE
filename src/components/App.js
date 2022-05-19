@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router , Navigate, Route  } from 'react-router-dom';
+import { BrowserRouter as Router , Route  } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { fetchPosts } from '../actions/posts';
 import { Home, Navbar, Page404, Login, Signup ,Settings} from './';
 import  jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
-import { Routes} from 'react-router-dom';
+import { Routes ,useNavigate ,useLocation} from 'react-router-dom';
 // import { useAuth } from "react-use-auth";
 import { getAuthTokenFromLocalStorage } from '../helpers/utils' 
 
@@ -16,8 +16,9 @@ import { getAuthTokenFromLocalStorage } from '../helpers/utils'
 // const Settings = () => <div>Settings</div>;
 
 const PrivateRoute = ({children , isLoggedin}) => {
-
-    return isLoggedin ? children : <Navigate to = "/login" />
+const navigate = useNavigate();
+const location = useLocation();
+    return isLoggedin ? children : navigate('/login',{state:{from:location.pathname}});
  
 }
 
