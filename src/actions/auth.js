@@ -155,7 +155,7 @@ import {
           name,
           password,
           confirm_password : confirmPassword ,
-        id :userId
+          id :userId
        }),
       })
         .then((response) => response.json())
