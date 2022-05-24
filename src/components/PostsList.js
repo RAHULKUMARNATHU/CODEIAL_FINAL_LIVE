@@ -26,14 +26,14 @@ class PostsList extends Component {
                 <div className="post-actions">
                   <div className="post-like">
                     <img
-                      src="https://cdn-icons.flaticon.com/png/512/3128/premium/3128313.png?token=exp=1651999951~hmac=a3b5c48979d0e8bd8106da4af2cc56c8"
+                      src="https://cdn-icons.flaticon.com/png/512/3128/premium/3128313.png?token=exp=1653405950~hmac=9c8940a74d3fa9511334866634f953e9"
                       alt="likes-icon"
                     />
                     <span>{post.likes.length}</span>
                   </div>
 
                   <div className="post-comments-icon">
-                    <img src="https://cdn-icons.flaticon.com/png/512/3608/premium/3608194.png?token=exp=1652000220~hmac=1dccf315d18ca1c00f8ddc7e0e8e2b21"
+                    <img src="https://cdn-icons-png.flaticon.com/512/1381/1381552.png"
                      alt="comments-icon"
                       />
                     <span>{post.comments.length}</span>
