@@ -160,7 +160,7 @@ import {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('data', data);
+          console.log('Edit profile data', data);
           if (data.success) {
             // dispatch action to save user
             dispatch(editUserSuccessful(data.data.user));
