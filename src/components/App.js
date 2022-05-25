@@ -4,7 +4,7 @@ import { BrowserRouter as Router , Route  } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { fetchPosts } from '../actions/posts';
-import { Home, Navbar, Page404, Login, Signup ,Settings} from './';
+import { Home, Navbar, Page404, Login, Signup ,Settings ,UserProfile} from './';
 import  jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import { Routes ,useNavigate ,useLocation} from 'react-router-dom';
@@ -32,7 +32,7 @@ class App extends React.Component {
     if (token) {
       const user = jwtDecode(token);
 
-      console.log('user', user);
+     
       this.props.dispatch(
         authenticateUser({
           email: user.email,
@@ -64,6 +64,8 @@ class App extends React.Component {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/settings" element={<PrivateRoute  isLoggedin ={auth.isLoggedin}><Settings /> </PrivateRoute>} />
+            <Route path="/user/:userId" element={<PrivateRoute  isLoggedin ={auth.isLoggedin}><UserProfile /> </PrivateRoute>} />
+            
             <Route path="*" element = {<Page404/>} />
           </Routes>
        
