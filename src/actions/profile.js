@@ -39,7 +39,7 @@ export function fetchUserProfile(userId) {
       })
       .then((response) => response.json())
       .then((data)  => {
-          dispatch(data.data.user);
+          dispatch(userProfileSuccess(data.data.user));
       });
   };
 }

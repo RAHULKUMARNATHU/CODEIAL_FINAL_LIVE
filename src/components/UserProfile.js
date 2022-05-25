@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
 import { fetchUserProfile } from '../actions/profile';
+import withRouter from './HOC/withRouter';
+
 
 class UserProfile extends Component {
   componentDidMount() {
-    const { match } = this.props;
+    const { params } = this.props;
 
-    if (match.params.userId) {
+    if (params.userId) {
       // dispatch an action
-      this.props.dispatch(fetchUserProfile(match.params.userId));
+      this.props.dispatch(fetchUserProfile(params.userId));
     }
+    console.log(this.props)
   }
 
   render() {
     const {
-      match ,
+        params,
       profile,
     } = this.props;
 
-    console.log('this.props', match);
+    console.log('this.props',params);
     const user = profile.user;
 
     if(profile.inProgress){
@@ -56,4 +60,4 @@ function mapStateToProps({ profile }) {
   };
 }
 
-export default connect(mapStateToProps)(UserProfile);
+export default connect(mapStateToProps)(withRouter(UserProfile));
