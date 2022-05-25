@@ -14,11 +14,11 @@ class UserProfile extends Component {
 
   render() {
     const {
-      match: { params },
+      match ,
       profile,
     } = this.props;
 
-    console.log('this.props', params);
+    console.log('this.props', match);
     const user = profile.user;
 
     if(profile.inProgress){

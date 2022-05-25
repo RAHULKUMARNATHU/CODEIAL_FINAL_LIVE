@@ -9,7 +9,10 @@ import  jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import { Routes ,useNavigate ,useLocation} from 'react-router-dom';
 // import { useAuth } from "react-use-auth";
-import { getAuthTokenFromLocalStorage } from '../helpers/utils' 
+
+import { getAuthTokenFromLocalStorage } from '../helpers/utils';
+import { fetchUserFriends } from '../actions/friends';
+
 
 // const Login = () => <div> Login </div>;
 // const Signup = () => <div>SignUp</div>;
@@ -40,12 +43,13 @@ class App extends React.Component {
           name: user.name,
         })
       );
+      this.props.dispatch(fetchUserFriends())
     }
   
   }
 
   render() {
-    const { posts ,auth } = this.props;
+    const { posts ,auth ,friends } = this.props;
 
     return (
       <Router>
@@ -57,7 +61,9 @@ class App extends React.Component {
               exact
               path="/"
               element={
-              <Home posts={posts} />
+              <Home posts={posts}
+              friends={friends}
+              isLoggedin={auth.isLoggedin} />
               }
             />
 
