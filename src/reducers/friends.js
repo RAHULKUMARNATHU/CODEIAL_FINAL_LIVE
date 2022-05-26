@@ -1,16 +1,26 @@
-import { ADD_FRIEND, FETCH_FRIEND_SUCCESS } from "../actions/actionTypes";
+import {
+  ADD_FRIEND,
+  FETCH_FRIENDS_SUCCESS,
+  REMOVE_FRIEND,
+} from '../actions/actionTypes';
 
-const defaultProfileState =[];
+const defaultProfileState = [];
 
-export default function friends(state = defaultProfileState ,action){
-    switch(action.type){
-        case FETCH_FRIEND_SUCCESS:
-            return[...action.friends];
+export default function friends(state = defaultProfileState, action) {
+  switch (action.type) {
+    case FETCH_FRIENDS_SUCCESS:
+      return [...action.friends];
 
-        case ADD_FRIEND:
-            return  state.concat(action.friendship);
+    case ADD_FRIEND:
+      return state.concat(action.friendship);
 
-        default :
-        return state;
-    }
+    case REMOVE_FRIEND:
+      const newArr = state.filter(
+        (friends) => friends.to_user.id !== action.userId
+      );
+      return newArr;
+
+    default:
+      return state;
+  }
 }
