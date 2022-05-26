@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {PostsList} from './'
 import FriendsList from './FreindsList'
 
@@ -15,4 +16,10 @@ class Home extends Component {
   }
 }
 
-export default Home
+function mapStateToProps({ friends }) {
+  return {
+    friends,
+  };
+}
+
+export default connect(mapStateToProps) (Home);
