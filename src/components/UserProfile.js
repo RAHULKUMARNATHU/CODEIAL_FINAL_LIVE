@@ -86,7 +86,7 @@ class UserProfile extends Component {
 
     const response = await fetch(url, extra);
     const data = await response.json();
-    //   console.log("Handle Add  data",data)
+      console.log("Handle Add  data",data)
 
     if (data.success) {
       this.setState({
@@ -95,6 +95,7 @@ class UserProfile extends Component {
       });
 
       this.props.dispatch(removeFriend(params.userId));
+      console.log(this.props.friends,"Remove Frnds");
     } else {
       this.setState({
         success: null,
@@ -119,7 +120,7 @@ class UserProfile extends Component {
   // }
 
   render() {
-    const { params, profile } = this.props;
+    const { params, profile  } = this.props;
 
     console.log('this.props', params);
     const user = profile.user;
@@ -130,7 +131,7 @@ class UserProfile extends Component {
 
 
     const isUserAFriend = this.checkIfUserIsAFriend();
-    const { success, error } = this.state;
+    const { success, error ,successMessage } = this.state;
     return (
       <div className="settings">
         <div className="img-container">
@@ -166,7 +167,7 @@ class UserProfile extends Component {
           )}
 
           {success && (
-            <div className="alert success-dailog">successMessage</div>
+            <div className="alert success-dailog">{successMessage}</div>
           )}
           {error && <div className="alert error-dailog">{error}</div>}
         </div>
