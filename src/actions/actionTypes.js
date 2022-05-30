@@ -36,4 +36,7 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 
 // likes
 
-export const UPDATE_POST_LIKE ='UPDATE_POST_LIKE'
+export const UPDATE_POST_LIKE ='UPDATE_POST_LIKE';
+
+// search
+export const FETCH_SEARCH_RESULTS_SUCCESS = 'FETCH_SEARCH_RESULTS_SUCCESS';
