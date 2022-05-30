@@ -17,13 +17,24 @@ class UserProfile extends Component {
   }
 
   componentDidMount() {
-      
     const { params } = this.props;
 
     if (params.userId) {
       // dispatch an action
       this.props.dispatch(fetchUserProfile(params.userId));
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    
+   
+      const { params: prevParams } = prevProps;
+    const { params: currentParams } = this.props;
+    if (prevParams && currentParams && prevParams.userId !== currentParams.userId) {
+      this.props.dispatch(fetchUserProfile(currentParams.userId));
+    }
+    
+    
   }
 
   checkIfUserIsAFriend = () => {
@@ -86,7 +97,7 @@ class UserProfile extends Component {
 
     const response = await fetch(url, extra);
     const data = await response.json();
-      console.log("Handle Add  data",data)
+    console.log('Handle Add  data', data);
 
     if (data.success) {
       this.setState({
@@ -95,7 +106,7 @@ class UserProfile extends Component {
       });
 
       this.props.dispatch(removeFriend(params.userId));
-      console.log(this.props.friends,"Remove Frnds");
+      console.log(this.props.friends, 'Remove Frnds');
     } else {
       this.setState({
         success: null,
@@ -120,7 +131,7 @@ class UserProfile extends Component {
   // }
 
   render() {
-    const { params, profile  } = this.props;
+    const { params, profile } = this.props;
 
     console.log('this.props', params);
     const user = profile.user;
@@ -129,9 +140,8 @@ class UserProfile extends Component {
       return <h1>Loading..</h1>;
     }
 
-
     const isUserAFriend = this.checkIfUserIsAFriend();
-    const { success, error ,successMessage } = this.state;
+    const { success, error, successMessage } = this.state;
     return (
       <div className="settings">
         <div className="img-container">
