@@ -57,7 +57,7 @@ class Post extends Component {
           <div className="post-actions">
             <div className="post-like">
               <img
-                src="https://cdn-icons.flaticon.com/png/512/3128/premium/3128313.png?token=exp=1653735674~hmac=5ed755cb799d14bd240166a10505a28e"
+                src="https://cdn-icons-png.flaticon.com/512/889/889221.png"
                 alt="likes-icon"
               />
               <span>{post.likes.length}</span>
