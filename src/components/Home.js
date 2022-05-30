@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {PostsList} from './'
-import FriendsList from './FreindsList'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { PostsList ,FriendsList ,Chat } from './';
 
 class Home extends Component {
   render() {
-    const {posts ,friends ,isLoggedin} = this.props
-    console.log('props', this.props)
+    const { posts, friends, isLoggedin } = this.props;
+    console.log('props', this.props);
     return (
-      <div className='home'>
-          <PostsList posts={posts} />
-          {isLoggedin && <FriendsList friends={friends} />}
+      <div className="home">
+        <PostsList posts={posts} />
+        {isLoggedin && <FriendsList friends={friends} />}
+        {isLoggedin && <Chat />}
       </div>
-    )
+    );
   }
 }
 
@@ -22,4 +22,4 @@ function mapStateToProps({ friends }) {
   };
 }
 
-export default connect(mapStateToProps) (Home);
+export default connect(mapStateToProps)(Home);
